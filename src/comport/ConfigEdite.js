@@ -23,12 +23,6 @@ const columns = [
         dataIndex: 'value',
         key: 'name',
         width: '12%',
-    }, {
-        title: '增加节点',
-        dataIndex: 'operation',
-        render: (_, record) => {
-            return <Button>增加节点</Button>
-        }
     },{
         title: '修改',
         dataIndex: 'operation',

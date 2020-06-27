@@ -185,20 +185,26 @@ class Config extends React.Component {
                             <Input type={"input"} defaultValue={this.state.module_id}/>
                         </Form.Item>
                         <Form.Item
-                            name="group_name"
-                            label="group_name"
-                        >
-                            <Input type={"input"} defaultValue={this.state.module_name}/>
-                        </Form.Item>
-                        <Form.Item
                             name="appId"
                             label="appId"
                         >
                             <Input type={"input"} defaultValue={this.state.module_id}/>
                         </Form.Item>
                         <Form.Item
-                            name="appName"
-                            label="appName"
+                            name="configId"
+                            label="config_id"
+                        >
+                            <Input type={"input"} defaultValue={this.state.module_id}/>
+                        </Form.Item>
+                        <Form.Item
+                            name="configName"
+                            label="config_name"
+                        >
+                            <Input type={"input"} defaultValue={this.state.module_id}/>
+                        </Form.Item>
+                        <Form.Item
+                            name="template_id"
+                            label="template_id"
                         >
                             <Input type={"input"} defaultValue={this.state.module_id}/>
                         </Form.Item>
