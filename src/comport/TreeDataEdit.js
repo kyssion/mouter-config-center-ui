@@ -18,12 +18,18 @@ const columns = [
         render: (_, record) => {
             return <Button>增加节点</Button>
         }
-    },{
-     title: '修改',
+    }, {
+        title: '绑定应用',
         dataIndex: 'operation',
         render: (_, record) => {
-        return <Button>修改</Button>
-    }
+            return <Button>绑定应用</Button>
+        }
+    },{
+        title: '修改名称',
+        dataIndex: 'operation',
+        render: (_, record) => {
+            return <Button>修改名称</Button>
+        }
     }
 ];
 

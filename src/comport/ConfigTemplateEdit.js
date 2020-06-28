@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import {Button, PageHeader, Table} from 'antd';
+import {Button, Col, Form, PageHeader, Row, Select, Table} from 'antd';
 import { Collapse } from 'antd';
 
 const { Panel } = Collapse;
@@ -19,16 +19,16 @@ const columns = [
         key: 'name',
         width: '12%',
     }, {
-        title: '增加节点',
+        title: '绑定应用字典',
         dataIndex: 'operation',
         render: (_, record) => {
-            return <Button>增加节点</Button>
+            return <Button>绑定应用字典</Button>
         }
     },{
-        title: '修改',
+        title: '删除',
         dataIndex: 'operation',
         render: (_, record) => {
-            return <Button>修改</Button>
+            return <Button>删除</Button>
         }
     }
 ];
@@ -131,7 +131,77 @@ class ConfigTemplateEdit extends React.Component{
                     <Panel header="配置信息树3" key="3">
                         <Table columns={columns} rowSelection={rowSelection} dataSource={data} pagination={false}/>
                     </Panel>
-                </Collapse>,
+                </Collapse>
+                <Row style={{margin:'10px'}} span={24} justify="end" gutter={10}>
+                    <Col>
+                        <Form.Item
+                            name="group_id"
+                            label="group_id">
+                        <Select defaultValue="lucy" style={{ width: 120 }}>
+                            <Select value="jack">门店</Select>
+                            <Select value="lucy">中台</Select>
+                            <Select value="disabled" disabled>
+                                直供
+                            </Select>
+                        </Select>
+                        </Form.Item>
+                    </Col>
+                    <Col>
+                        <Form.Item
+                            name="app_id"
+                            label="app_id">
+                        <Select defaultValue="lucy" style={{ width: 120 }}>
+                            <Select value="jack">门店</Select>
+                            <Select value="lucy">中台</Select>
+                            <Select value="disabled" disabled>
+                                直供
+                            </Select>
+                        </Select>
+                        </Form.Item>
+                    </Col>
+                    <Col>
+                        <Form.Item
+                            name="data_id"
+                            label="data_id">
+                        <Select defaultValue="lucy" style={{ width: 120 }}>
+                            <Select value="jack">门店</Select>
+                            <Select value="lucy">中台</Select>
+                            <Select value="disabled" disabled>
+                                直供
+                            </Select>
+                        </Select>
+                        </Form.Item>
+                    </Col>
+                    <Col>
+                        <Form.Item
+                            name="customized_form_controls"
+                            layout="inline"
+                            onFinish={this.onFinish}
+                            initialValues={{price: {number: 0, currency: 'rmb',},}}>
+                            <Form.Item>
+                                <Button type="primary" htmlType="submit" onClick={this.showModal}>
+                                    增加应用
+                                </Button>
+                            </Form.Item>
+                        </Form.Item>
+                    </Col>
+                    <Col>
+                        <Form
+                            name="customized_form_controls"
+                            layout="inline"
+                            onFinish={this.onFinish}
+                            initialValues={{price: {number: 0, currency: 'rmb',},}}>
+                            <Form.Item>
+                                <Button type="primary" htmlType="submit" onClick={this.showModal}>
+                                    保存
+                                </Button>
+                            </Form.Item>
+                        </Form>
+                    </Col>
+                </Row>
+                <Row style={{margin:'10px'}} justify="end">
+
+                </Row>
             </div>
         );
     }

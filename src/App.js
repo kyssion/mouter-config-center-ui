@@ -39,34 +39,34 @@ class App extends React.Component {
                 <Sider collapsible collapsed={this.state.collapsed} onCollapse={this.onCollapse}>
                     <div className="logo" />
                     <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline" style={{marginTop:'30px'}}>
-                        <Menu.Item key="1" icon={<PieChartOutlined />}>
-                            <Link to={"configGroup"}>
-                                配置组管理
-                            </Link>
-                        </Menu.Item>
+                        {/*<Menu.Item key="1" icon={<PieChartOutlined />}>*/}
+                        {/*    <Link to={"configGroup"}>*/}
+                        {/*        配置组管理*/}
+                        {/*    </Link>*/}
+                        {/*</Menu.Item>*/}
                         <Menu.Item key="2" icon={<DesktopOutlined />}>
                             <Link to={"configApp"}>
                                 服务管理
                             </Link>
                         </Menu.Item>
-                        <Menu.Item key="3" icon={<DesktopOutlined />}>
-                            <Link to={"config"}>
-                                配置信息管理
-                            </Link>
-                        </Menu.Item>
+                        {/*<Menu.Item key="3" icon={<DesktopOutlined />}>*/}
+                        {/*    <Link to={"config"}>*/}
+                        {/*        配置信息管理*/}
+                        {/*    </Link>*/}
+                        {/*</Menu.Item>*/}
                         <Menu.Item key="4" icon={<DesktopOutlined />}>
                             <Link to={"configTemplate"}>
-                                配置模板管理
+                                模板管理
                             </Link>
                         </Menu.Item>
                         <Menu.Item key="5" icon={<DesktopOutlined />}>
                             <Link to={"configData"}>
-                                配置应用字典
+                                应用字典管理
                             </Link>
                         </Menu.Item>
                         <Menu.Item key="6" icon={<DesktopOutlined />}>
                             <Link to={"configTemplateTree"}>
-                            配置应用管理
+                                应用字段
                             </Link>
                         </Menu.Item>
                     </Menu>

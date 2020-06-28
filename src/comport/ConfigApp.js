@@ -1,5 +1,6 @@
 import React from "react";
 import {Button, Col, Form, Input, Modal, PageHeader, Row, Select, Table} from "antd";
+import {Link} from "react-router-dom";
 
 const { Column, ColumnGroup } = Table;
 
@@ -72,8 +73,8 @@ class ConfigApp extends React.Component {
                 <PageHeader
                     className="site-page-header"
                     onBack={() => null}
-                    title="应用管理"
-                    subTitle="应用管理详情"
+                    title="服务管理"
+                    subTitle="服务详情"
                 />
                 <Row style={{margin:'10px'}}>
                     <Col>
@@ -82,18 +83,6 @@ class ConfigApp extends React.Component {
                             layout="inline"
                             onFinish={this.onFinish}
                             initialValues={{price: {number: 0, currency: 'rmb',},}}>
-                            <Form.Item
-                                name="groupId"
-                                label="groupId"
-                            >
-                                <Select defaultValue="lucy" style={{ width: 120 }}>
-                                    <Select value="jack">门店</Select>
-                                    <Select value="lucy">中台</Select>
-                                    <Select value="disabled" disabled>
-                                        直供
-                                    </Select>
-                                </Select>
-                            </Form.Item>
                             <Form.Item
                                 name="appId"
                                 label="appId"
@@ -123,7 +112,7 @@ class ConfigApp extends React.Component {
                     <Column title="create user" dataIndex="create_user" key="create user" />
                     <Column title="update user" dataIndex="update_user" key="update user" />
                     <Column
-                        title="编辑"
+                        title="修改"
                         dataIndex="group_id"
                         key="tags"
                         render={(text, record) => (
@@ -138,7 +127,19 @@ class ConfigApp extends React.Component {
                                         newSt.visible=true;
                                         return newSt;
                                     })
-                                }}>编辑</Button>
+                                }}>修改</Button>
+                            </>
+                        )}
+                    />
+                    <Column
+                        title="应用配置"
+                        dataIndex="group_id"
+                        key="tags"
+                        render={(text, record) => (
+                            <>
+                                <Link to={'config'}>
+                                    <Button>应用配置</Button>
+                                </Link>
                             </>
                         )}
                     />
@@ -158,18 +159,7 @@ class ConfigApp extends React.Component {
                 >
                     <Form
                         name="ttttt">
-                        <Form.Item
-                            name="groupId"
-                            label="groupId"
-                        >
-                            <Input type={"input"} defaultValue={this.state.module_id}/>
-                        </Form.Item>
-                        <Form.Item
-                            name="group_name"
-                            label="group_name"
-                        >
-                            <Input type={"input"} defaultValue={this.state.module_name}/>
-                        </Form.Item>
+
                         <Form.Item
                             name="appId"
                             label="appId"

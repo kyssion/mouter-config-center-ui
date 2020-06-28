@@ -113,8 +113,8 @@ class ConfigDataCollection extends React.Component {
                                 </Select>
                             </Form.Item>
                             <Form.Item
-                                name="configId"
-                                label="configId"
+                                name="dataId"
+                                label="dataId"
                             >
                                 <PriceInput />
                             </Form.Item>
@@ -181,6 +181,7 @@ class ConfigDataCollection extends React.Component {
                     visible={this.state.visible}
                     onOk={this.handleOk}
                     onCancel={this.handleCancel}
+                    width={'1000px'}
                 >
                     <Form
                         name="ttttt">
@@ -188,27 +189,83 @@ class ConfigDataCollection extends React.Component {
                             name="groupId"
                             label="groupId"
                         >
-                            <Input type={"input"} defaultValue={this.state.module_id}/>
-                        </Form.Item>
-                        <Form.Item
-                            name="group_name"
-                            label="group_name"
-                        >
-                            <Input type={"input"} defaultValue={this.state.module_name}/>
+                            <Select defaultValue="lucy" style={{ width: 120 }}>
+                                <Select value="jack">门店</Select>
+                                <Select value="lucy">中台</Select>
+                                <Select value="disabled" disabled>
+                                    直供
+                                </Select>
+                            </Select>
                         </Form.Item>
                         <Form.Item
                             name="appId"
                             label="appId"
                         >
-                            <Input type={"input"} defaultValue={this.state.module_id}/>
+                            <Select defaultValue="lucy" style={{ width: 120 }}>
+                                <Select value="jack">80001</Select>
+                                <Select value="lucy">80002</Select>
+                                <Select  disabled>
+                                    80003
+                                </Select>
+                            </Select>
                         </Form.Item>
                         <Form.Item
-                            name="appName"
+                            name="dataId"
                             label="appName"
                         >
                             <Input type={"input"} defaultValue={this.state.module_id}/>
                         </Form.Item>
+                        <Form.Item
+                            name="dataName"
+                            label="dataName"
+                        >
+                            <Input type={"input"} defaultValue={this.state.module_id}/>
+                        </Form.Item>
                     </Form>
+                    <span>
+                            <Form
+                                name="customized_form_controls"
+                                layout="inline"
+                            >
+                                    <Form.Item
+                                        name="key"
+                                        label="key"
+                                    >
+                                          <Input
+                                              type="text"
+                                          />
+                                    </Form.Item>
+                                    <Form.Item
+                                        name="value"
+                                        label="value"
+                                    >
+                                          <Input
+                                              type="text"
+                                          />
+                                    </Form.Item>
+                                    <Form.Item
+                                        name="name"
+                                        label="name"
+                                    >
+                                          <Input
+                                              type="text"
+                                          />
+                                    </Form.Item>
+                                <Button>增加</Button>
+                            </Form>
+                    </span>
+                    <Table dataSource={data} style={{marginTop:'30px'}}>
+                        <Column title="group id" dataIndex="group_id" key="group_id" />
+                        <Column title="app id" dataIndex="app_id" key="name" />
+                        <Column title="data id" dataIndex="config_data_id" key="name" />
+                        <Column
+                            title="删除"
+                            key="action"
+                            render={(text, record) => (
+                                <Button>删除</Button>
+                            )}
+                        />
+                    </Table>
                 </Modal>
             </div>
         );

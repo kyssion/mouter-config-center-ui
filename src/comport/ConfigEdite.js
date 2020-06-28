@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import {Button, PageHeader, Table} from 'antd';
+import {Button, Col, Form, Input, PageHeader, Row, Table} from 'antd';
 import { Collapse } from 'antd';
 
 const { Panel } = Collapse;
@@ -134,10 +134,39 @@ class ConfigEdite extends React.Component{
                     <Panel header="配置信息树3" key="3">
                         <Table columns={columns} rowSelection={rowSelection} dataSource={data} pagination={false}/>
                     </Panel>
-                </Collapse>,
+                </Collapse>
+                <Row style={{margin:'10px'}} justify="end">
+                    <Col>
+                        <Form
+                            name="customized_form_controls"
+                            layout="inline"
+                            onFinish={this.onFinish}
+                            initialValues={{price: {number: 0, currency: 'rmb',},}}>
+                            <Form.Item>
+                                <Button type="primary" htmlType="submit" onClick={this.showModal}>
+                                    保存
+                                </Button>
+                            </Form.Item>
+                        </Form>
+                    </Col>
+                </Row>
             </div>
+
         );
     }
 }
+const PriceInput = ({ value = {}, onChange }) =>{
+    return (
+        <span>
+            <Input
+                type="text"
+                style={{
+                    width: 300,
+                }}
+            />
+        </span>
+    );
+};
+
 
 export default ConfigEdite;
