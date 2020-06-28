@@ -41,12 +41,12 @@ class App extends React.Component {
                     <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline" style={{marginTop:'30px'}}>
                         <Menu.Item key="1" icon={<PieChartOutlined />}>
                             <Link to={"configGroup"}>
-                                配置域管理
+                                配置组管理
                             </Link>
                         </Menu.Item>
                         <Menu.Item key="2" icon={<DesktopOutlined />}>
                             <Link to={"configApp"}>
-                                应用管理
+                                服务管理
                             </Link>
                         </Menu.Item>
                         <Menu.Item key="3" icon={<DesktopOutlined />}>
@@ -61,12 +61,12 @@ class App extends React.Component {
                         </Menu.Item>
                         <Menu.Item key="5" icon={<DesktopOutlined />}>
                             <Link to={"configData"}>
-                                配置信息数据集
+                                配置应用字典
                             </Link>
                         </Menu.Item>
                         <Menu.Item key="6" icon={<DesktopOutlined />}>
                             <Link to={"configTemplateTree"}>
-                            配置信息树管理
+                            配置应用管理
                             </Link>
                         </Menu.Item>
                     </Menu>

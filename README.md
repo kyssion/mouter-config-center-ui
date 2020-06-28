@@ -1,8 +1,5 @@
-1.  保留现在的存储能力（待定）增加层级结构，目录树结构
-2. 重用现在的推送mis 部分的逻辑 
-3. 重用现在配置中心web框架架子
-4. 增加基于groupid appId configId 三种维度的权限管理 
-5.  修改前端页面
+
+https://xiaomi.f.mioffice.cn/sheets/shtk4Zzs4HbvRPAU7WsfYDot5sJ
 
 ```sql
 create schema if not exists `mount-config-admin` collate latin1_swedish_ci;
