@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import {Button, Col, Form, Input, PageHeader, Row, Table} from 'antd';
+import {Button, Checkbox, Col, Form, Input, PageHeader, Row, Table} from 'antd';
 import { Collapse } from 'antd';
 
 const { Panel } = Collapse;
@@ -24,10 +24,10 @@ const columns = [
         key: 'name',
         width: '12%',
     },{
-        title: '修改',
+        title: '是否修改',
         dataIndex: 'operation',
         render: (_, record) => {
-            return <Button>修改</Button>
+            return (<Checkbox></Checkbox>)
         }
     }
 ];
