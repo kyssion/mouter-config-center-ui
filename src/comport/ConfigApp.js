@@ -159,7 +159,18 @@ class ConfigApp extends React.Component {
                 >
                     <Form
                         name="ttttt">
-
+                        <Form.Item
+                            name="groupId"
+                            label="groupId"
+                        >
+                        <Select defaultValue="lucy" style={{ width: 120 }}>
+                            <Select value="jack">门店</Select>
+                            <Select value="lucy">中台</Select>
+                            <Select value="disabled" disabled>
+                                直供
+                            </Select>
+                        </Select>
+                        </Form.Item>
                         <Form.Item
                             name="appId"
                             label="appId"

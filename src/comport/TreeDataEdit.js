@@ -118,8 +118,8 @@ class TreeDataEdit extends React.Component{
                 <PageHeader
                     className="site-page-header"
                     onBack={() => null}
-                    title="站点信息树管理"
-                    subTitle="站点信息树详情"
+                    title="应用字段信息"
+                    subTitle="应用字段信息详情"
                 />
                 <Table columns={columns} rowSelection={rowSelection} dataSource={data} />
             </div>

@@ -78,8 +78,8 @@ class ConfigDataCollection extends React.Component {
                 <PageHeader
                     className="site-page-header"
                     onBack={() => null}
-                    title="配置信息数据集"
-                    subTitle="配置信息数据集详情"
+                    title="应用字典信息数据"
+                    subTitle="应用字典信息数据详情"
                 />
                 <Row style={{margin:'10px'}}>
                     <Col>

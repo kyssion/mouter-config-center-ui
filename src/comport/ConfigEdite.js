@@ -121,8 +121,8 @@ class ConfigEdite extends React.Component{
                 <PageHeader
                     className="site-page-header"
                     onBack={() => null}
-                    title="站点信息树模板管理"
-                    subTitle="站点信息树模板管理编辑"
+                    title="服务配置信息管理"
+                    subTitle="服务配置信息管理编辑"
                 />
                 <Collapse defaultActiveKey={['1']} onChange={callback}>
                     <Panel header="配置信息树1" key="1">

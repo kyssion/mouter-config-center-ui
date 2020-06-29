@@ -79,8 +79,8 @@ class ConfigTemplateTree extends React.Component {
                 <PageHeader
                     className="site-page-header"
                     onBack={() => null}
-                    title="配置信息模板管理"
-                    subTitle="配置信息模板管理详情"
+                    title="应用字段信息"
+                    subTitle="应用字段信息详情"
                 />
                 <Row style={{margin:'10px'}}>
                     <Col>
