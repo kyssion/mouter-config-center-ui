@@ -64,12 +64,14 @@ const columns = [
         render: ()=>{
             return <Button onClick={
                 ()=>{
-                    this.status({visible:true})
+                    that.status({visible:true})
                 }
             }>编辑</Button>
         }
     }
 ];
+
+let that;
 
 const data = [
     {
@@ -166,6 +168,15 @@ const rowSelection = {
 };
 
 class ConfigEdite extends React.Component{
+
+    constructor(prop) {
+        super(prop);
+        this.state = {
+            visible:false
+        }
+        that = this;
+    }
+
     showModal = () => {
         this.setState({
             visible: true,

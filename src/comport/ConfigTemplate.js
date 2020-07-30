@@ -91,7 +91,7 @@ class ConfigTemplate extends React.Component {
                             initialValues={{price: {number: 0, currency: 'rmb',},}}>
                             <Form.Item
                                 name="groupId"
-                                label="groupId"
+                                label="配置组ID"
                             >
                                 <Select defaultValue="lucy" style={{ width: 120 }}>
                                     <Select value="jack">门店</Select>
@@ -102,8 +102,8 @@ class ConfigTemplate extends React.Component {
                                 </Select>
                             </Form.Item>
                             <Form.Item
-                                name="appId"
-                                label="appId"
+                                name="服务ID"
+                                label="服务ID"
                             >
                                 <Select defaultValue="lucy" style={{ width: 120 }}>
                                     <Select value="jack">门店</Select>
@@ -114,8 +114,8 @@ class ConfigTemplate extends React.Component {
                                 </Select>
                             </Form.Item>
                             <Form.Item
-                                name="configId"
-                                label="configId"
+                                name="配置信息ID"
+                                label="模版ID"
                             >
                                 <PriceInput />
                             </Form.Item>
@@ -133,14 +133,14 @@ class ConfigTemplate extends React.Component {
                     </Col>
                 </Row>
                 <Table dataSource={data}>
-                    <Column title="group id" dataIndex="group_id" key="group_id" />
-                    <Column title="app id" dataIndex="app_id" key="name" />
-                    <Column title="template id" dataIndex="template_id" key="name" />
-                    <Column title="template name" dataIndex="template_name" key="name" />
-                    <Column title="create time" dataIndex="create_time" key="create time" />
-                    <Column title="update time" dataIndex="update_time" key="update time" />
-                    <Column title="create user" dataIndex="create_user" key="create user" />
-                    <Column title="update user" dataIndex="update_user" key="update user" />
+                    <Column title="配置组id" dataIndex="group_id" key="group_id" />
+                    <Column title="服务id" dataIndex="app_id" key="name" />
+                    <Column title="模版id" dataIndex="template_id" key="name" />
+                    <Column title="模版名称" dataIndex="template_name" key="name" />
+                    <Column title="创建时间" dataIndex="create_time" key="create time" />
+                    <Column title="更新时间" dataIndex="update_time" key="update time" />
+                    <Column title="创建人" dataIndex="create_user" key="create user" />
+                    <Column title="更新人" dataIndex="update_user" key="update user" />
                     <Column
                         title="编辑"
                         dataIndex="group_id"
@@ -169,27 +169,39 @@ class ConfigTemplate extends React.Component {
                 >
                     <Form
                         name="ttttt">
+                            <Form.Item
+                                name="配置组ID"
+                                label="服务ID"
+                            >
+                                <Select defaultValue="lucy" style={{ width: 120 }}>
+                                    <Select value="jack">配置组1</Select>
+                                    <Select value="lucy">配置组2</Select>
+                                    <Select value="disabled" >
+                                        配置组3
+                                    </Select>
+                                </Select>
+                            </Form.Item>
                         <Form.Item
-                            name="groupId"
-                            label="groupId"
+                            name="服务ID"
+                            label="服务ID"
                         >
-                            <Input type={"input"} defaultValue={this.state.module_id}/>
-                        </Form.Item>
-                        <Form.Item
-                            name="group_name"
-                            label="group_name"
-                        >
-                            <Input type={"input"} defaultValue={this.state.module_name}/>
+                            <Select defaultValue="lucy" style={{ width: 120 }}>
+                                <Select value="jack">服务1</Select>
+                                <Select value="lucy">服务2</Select>
+                                <Select value="disabled">
+                                    服务3
+                                </Select>
+                            </Select>
                         </Form.Item>
                         <Form.Item
                             name="appId"
-                            label="appId"
+                            label="模版名称"
                         >
                             <Input type={"input"} defaultValue={this.state.module_id}/>
                         </Form.Item>
                         <Form.Item
                             name="appName"
-                            label="appName"
+                            label="模版ID"
                         >
                             <Input type={"input"} defaultValue={this.state.module_id}/>
                         </Form.Item>
