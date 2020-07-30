@@ -1,7 +1,7 @@
 import React from "react";
 import {Button, Col, Form, Input, Modal, PageHeader, Row, Select, Table} from "antd";
 import {Link} from "react-router-dom";
-
+import {EditOutlined,SearchOutlined,DeleteOutlined } from "@ant-design/icons"
 const { Column, ColumnGroup } = Table;
 
 const data = [
@@ -84,8 +84,26 @@ class ConfigApp extends React.Component {
                             onFinish={this.onFinish}
                             initialValues={{price: {number: 0, currency: 'rmb',},}}>
                             <Form.Item
+                                name="groupId"
+                                label="配置组"
+                            >
+                                <Select defaultValue="lucy" style={{ width: 120 }}>
+                                    <Select value="jack">门店</Select>
+                                    <Select value="lucy">中台</Select>
+                                    <Select value="disabled" disabled>
+                                        直供
+                                    </Select>
+                                </Select>
+                            </Form.Item>
+                            <Form.Item
                                 name="appId"
-                                label="appId"
+                                label="服务ID"
+                            >
+                                <PriceInput />
+                            </Form.Item>
+                            <Form.Item
+                                name="appId"
+                                label="服务名称"
                             >
                                 <PriceInput />
                             </Form.Item>
@@ -103,21 +121,21 @@ class ConfigApp extends React.Component {
                     </Col>
                 </Row>
                 <Table dataSource={data}>
-                    <Column title="group id" dataIndex="group_id" key="group_id" />
-                    <Column title="group name" dataIndex="group_name" key="name" />
-                    <Column title="app id" dataIndex="app_id" key="name" />
-                    <Column title="app name" dataIndex="app_name" key="name" />
-                    <Column title="create time" dataIndex="create_time" key="create time" />
-                    <Column title="update time" dataIndex="update_time" key="update time" />
-                    <Column title="create user" dataIndex="create_user" key="create user" />
-                    <Column title="update user" dataIndex="update_user" key="update user" />
+                    <Column title="配置组ID" dataIndex="group_id" key="group_id" />
+                    <Column title="配置组名称" dataIndex="group_name" key="name" />
+                    <Column title="服务id" dataIndex="app_id" key="name" />
+                    <Column title="服务名称" dataIndex="app_name" key="name" />
+                    <Column title="创建时间" dataIndex="create_time" key="create time" />
+                    <Column title="更新时间" dataIndex="update_time" key="update time" />
+                    <Column title="创建人" dataIndex="create_user" key="create user" />
+                    <Column title="更新人" dataIndex="update_user" key="update user" />
                     <Column
                         title="修改"
                         dataIndex="group_id"
                         key="tags"
                         render={(text, record) => (
                             <>
-                                <Button onClick={()=>{
+                                <Button type={"link"} icon={<EditOutlined />} onClick={()=>{
                                     this.setState((r)=>{
                                         console.log(text);
                                         console.log(record);
@@ -132,13 +150,13 @@ class ConfigApp extends React.Component {
                         )}
                     />
                     <Column
-                        title="应用配置"
+                        title="服务配置信息"
                         dataIndex="group_id"
                         key="tags"
                         render={(text, record) => (
                             <>
                                 <Link to={'config'}>
-                                    <Button>应用配置</Button>
+                                    <Button type={"primary"} icon={<SearchOutlined/>}>配置信息查看</Button>
                                 </Link>
                             </>
                         )}
@@ -147,7 +165,7 @@ class ConfigApp extends React.Component {
                         title="删除"
                         key="action"
                         render={(text, record) => (
-                            <Button>删除</Button>
+                            <Button icon={<DeleteOutlined />} type={"danger"}>删除</Button>
                         )}
                     />
                 </Table>

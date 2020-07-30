@@ -1,8 +1,12 @@
 import React from "react";
 import {Button, Col, Form, Input, Modal, PageHeader, Row, Select, Table} from "antd";
 import {Link} from "react-router-dom";
+import {EditOutlined,SearchOutlined,CloudUploadOutlined ,DeleteOutlined } from "@ant-design/icons"
+
 
 const { Column, ColumnGroup } = Table;
+
+const { Option } = Select;
 
 const data = [
     {
@@ -90,32 +94,14 @@ class Config extends React.Component {
                             onFinish={this.onFinish}
                             initialValues={{price: {number: 0, currency: 'rmb',},}}>
                             <Form.Item
-                                name="groupId"
-                                label="groupId"
+                                name="配置id"
+                                label="配置id"
                             >
-                                <Select defaultValue="lucy" style={{ width: 120 }}>
-                                    <Select value="jack">门店</Select>
-                                    <Select value="lucy">中台</Select>
-                                    <Select value="disabled" disabled>
-                                        直供
-                                    </Select>
-                                </Select>
+                                <PriceInput />
                             </Form.Item>
                             <Form.Item
-                                name="appId"
-                                label="appId"
-                            >
-                                <Select defaultValue="lucy" style={{ width: 120 }}>
-                                    <Select value="jack">门店</Select>
-                                    <Select value="lucy">中台</Select>
-                                    <Select value="disabled" disabled>
-                                        直供
-                                    </Select>
-                                </Select>
-                            </Form.Item>
-                            <Form.Item
-                                name="configId"
-                                label="configId"
+                                name="配置名称"
+                                label="配置名称"
                             >
                                 <PriceInput />
                             </Form.Item>
@@ -133,15 +119,15 @@ class Config extends React.Component {
                     </Col>
                 </Row>
                 <Table dataSource={data}>
-                    <Column title="group id" dataIndex="group_id" key="group_id" />
-                    <Column title="app id" dataIndex="app_id" key="name" />
-                    <Column title="config id" dataIndex="config_id" key="name" />
-                    <Column title="config name" dataIndex="config_name" key="name" />
+                    <Column title="服务ID" dataIndex="app_id" key="name" />
+                    <Column title="服务名称" dataIndex="app_id" key="name" />
+                    <Column title="配置ID" dataIndex="config_id" key="name" />
+                    <Column title="配置名称" dataIndex="config_name" key="name" />
                     <Column title="发布状态" dataIndex="发布状态" key="发布状态" />
-                    <Column title="create time" dataIndex="create_time" key="create time" />
-                    <Column title="update time" dataIndex="update_time" key="update time" />
-                    <Column title="create user" dataIndex="create_user" key="create user" />
-                    <Column title="update user" dataIndex="update_user" key="update user" />
+                    <Column title="创建时间" dataIndex="create_time" key="create time" />
+                    <Column title="更新时间" dataIndex="update_time" key="update time" />
+                    <Column title="创建人" dataIndex="create_user" key="create user" />
+                    <Column title="更新人" dataIndex="update_user" key="update user" />
                     <Column
                         title="编辑"
                         dataIndex="group_id"
@@ -149,7 +135,7 @@ class Config extends React.Component {
                         render={(text, record) => (
                             <>
                                 <Link to={"configEdit"}>
-                                    <Button onClick={()=>{
+                                    <Button icon={<EditOutlined/>} onClick={()=>{
                                     }}>编辑</Button>
                                 </Link>
                             </>
@@ -159,14 +145,14 @@ class Config extends React.Component {
                         title="发布"
                         key="action"
                         render={(text, record) => (
-                            <Button>发布</Button>
+                            <Button type={"primary"} icon={<CloudUploadOutlined/>}>发布</Button>
                         )}
                     />
                     <Column
                         title="删除"
                         key="action"
                         render={(text, record) => (
-                            <Button>删除</Button>
+                            <Button type={"danger"} icon={<DeleteOutlined/>}>删除</Button>
                         )}
                     />
                 </Table>
@@ -180,33 +166,40 @@ class Config extends React.Component {
                         name="ttttt">
                         <Form.Item
                             name="groupId"
-                            label="groupId"
+                            label="配置组ID"
                         >
                             <Input type={"input"} defaultValue={this.state.module_id}/>
                         </Form.Item>
                         <Form.Item
-                            name="appId"
+                            name="应用ID"
                             label="appId"
                         >
                             <Input type={"input"} defaultValue={this.state.module_id}/>
                         </Form.Item>
                         <Form.Item
-                            name="configId"
+                            name="配置ID"
                             label="config_id"
                         >
                             <Input type={"input"} defaultValue={this.state.module_id}/>
                         </Form.Item>
                         <Form.Item
-                            name="configName"
+                            name="配置名称"
                             label="config_name"
                         >
                             <Input type={"input"} defaultValue={this.state.module_id}/>
                         </Form.Item>
                         <Form.Item
-                            name="template_id"
+                            name="模版ID"
                             label="template_id"
                         >
-                            <Input type={"input"} defaultValue={this.state.module_id}/>
+                            <Select style={{ width: 120 }}>
+                                <Option value="模版1">模版1</Option>
+                                <Option value="模版2">模版2</Option>
+                                <Option value="模版3">
+                                    模版3
+                                </Option>
+                                <Option value="模版4">模版4</Option>
+                            </Select>
                         </Form.Item>
                     </Form>
                 </Modal>
