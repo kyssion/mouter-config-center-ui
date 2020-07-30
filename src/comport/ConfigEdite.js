@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import {Button, Checkbox, Col, Form, Input, PageHeader, Row, Table} from 'antd';
+import {Select, Button, Checkbox, Col, Form, Input, PageHeader, Row, Table, Modal} from 'antd';
 import { Collapse } from 'antd';
 
 const { Panel } = Collapse;
 
+const { Option } = Select;
 function callback(key) {
     console.log(key);
 }
@@ -17,17 +18,55 @@ const columns = [
         title: '节点名称',
         dataIndex: 'name',
         key: 'name',
-        width: '12%',
     },{
         title: '节点值',
         dataIndex: 'value',
         key: 'name',
-        width: '12%',
+        render: ()=>{
+            let num = Math.random()*3000;
+            if(num<1000){
+                return  (<Select defaultValue="lucy" style={{ width: 120 }}>
+                    <Option value="jack">Jack</Option>
+                    <Option value="lucy">Lucy</Option>
+                    <Option value="disabled" disabled>
+                        Disabled
+                    </Option>
+                    <Option value="Yiminghe">yiminghe</Option>
+                </Select>);
+            }else if(num>=1000&&num<2000){
+                return (<Select mode="multiple" defaultValue="lucy" style={{ width: 120 }}>
+                    <Option value="jack">Jack</Option>
+                    <Option value="lucy">Lucy</Option>
+                    <Option value="disabled" disabled>
+                        Disabled
+                    </Option>
+                    <Option value="Yiminghe">yiminghe</Option>
+                </Select>);
+            }else{
+                return <Input/>
+            }
+        }
     },{
-        title: '是否修改',
-        dataIndex: 'operation',
-        render: (_, record) => {
-            return (<Checkbox></Checkbox>)
+        title:"元数据类型",
+        dataIndex: "type",
+        key:"type",
+    },{
+        title:"元数据信息",
+        dataIndex: "typeValue",
+        key:"typeValue",
+        render:(text)=>{
+            return <textarea value={text}></textarea>
+        }
+    },{
+        title: '元数据编辑',
+        dataIndex: 'value',
+        key: 'name',
+        render: ()=>{
+            return <Button onClick={
+                ()=>{
+                    this.status({visible:true})
+                }
+            }>编辑</Button>
         }
     }
 ];
@@ -45,6 +84,8 @@ const data = [
                 id: 42,
                 value:"value1",
                 address: 'New York No. 2 Lake Park',
+                type:"DIV",
+                typeValue:"<div>test</div>"
             },
             {
                 key: 12,
@@ -52,12 +93,16 @@ const data = [
                 id: 30,
                 value:"value1",
                 address: 'New York No. 3 Lake Park',
+                type:"DIV",
+                typeValue:"<div>test</div>",
                 children: [
                     {
                         key: 121,
                         name: '红米电视',
                         id: 16,
                         address: 'New York No. 3 Lake Park',
+                        type:"DIV",
+                        typeValue:"<div>test</div>"
                     },
                 ],
             },
@@ -66,6 +111,8 @@ const data = [
                 name: '家电',
                 id: 72,
                 address: 'London No. 1 Lake Park',
+                type:"DIV",
+                typeValue:"<div>test</div>",
                 children: [
                     {
                         key: 131,
@@ -79,6 +126,8 @@ const data = [
                                 id: 25,
                                 value:"value1",
                                 address: 'London No. 3 Lake Park',
+                                type:"DIV",
+                                typeValue:"<div>test</div>"
                             },
                             {
                                 key: 1312,
@@ -86,6 +135,8 @@ const data = [
                                 id: 18,
                                 value: "zhi",
                                 address: 'London No. 4 Lake Park',
+                                type:"DIV",
+                                typeValue:"<div>test</div>"
                             },
                         ],
                     },
@@ -115,7 +166,27 @@ const rowSelection = {
 };
 
 class ConfigEdite extends React.Component{
+    showModal = () => {
+        this.setState({
+            visible: true,
+        });
+    };
+
+    handleOk = e => {
+        console.log(e);
+        this.setState({
+            visible: false,
+        });
+    };
+
+    handleCancel = e => {
+        console.log(e);
+        this.setState({
+            visible: false,
+        });
+    };
     render() {
+        console.log(this.state);
         return(
             <div>
                 <PageHeader
@@ -150,6 +221,15 @@ class ConfigEdite extends React.Component{
                         </Form>
                     </Col>
                 </Row>
+                <Modal
+                    title="Basic Modal"
+                    visible={false}
+                    onOk={this.handleOk}
+                    onCancel={this.handleCancel}
+                >
+                    <Form>
+                    </Form>
+                </Modal>
             </div>
 
         );
