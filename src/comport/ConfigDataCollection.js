@@ -90,7 +90,7 @@ class ConfigDataCollection extends React.Component {
                             initialValues={{price: {number: 0, currency: 'rmb',},}}>
                             <Form.Item
                                 name="groupId"
-                                label="groupId"
+                                label="配置组"
                             >
                                 <Select defaultValue="lucy" style={{ width: 120 }}>
                                     <Select value="jack">门店</Select>
@@ -102,7 +102,7 @@ class ConfigDataCollection extends React.Component {
                             </Form.Item>
                             <Form.Item
                                 name="appId"
-                                label="appId"
+                                label="服务ID"
                             >
                                 <Select defaultValue="lucy" style={{ width: 120 }}>
                                     <Select value="jack">门店</Select>
@@ -114,7 +114,7 @@ class ConfigDataCollection extends React.Component {
                             </Form.Item>
                             <Form.Item
                                 name="dataId"
-                                label="dataId"
+                                label="字典ID"
                             >
                                 <PriceInput />
                             </Form.Item>
@@ -132,15 +132,15 @@ class ConfigDataCollection extends React.Component {
                     </Col>
                 </Row>
                 <Table dataSource={data}>
-                    <Column title="group id" dataIndex="group_id" key="group_id" />
-                    <Column title="app id" dataIndex="app_id" key="name" />
-                    <Column title="data id" dataIndex="config_data_id" key="name" />
-                    <Column title="data name" dataIndex="config_data_name" key="name" />
+                    <Column title="配置组ID" dataIndex="group_id" key="group_id" />
+                    <Column title="服务ID" dataIndex="app_id" key="name" />
+                    <Column title="字典ID" dataIndex="config_data_id" key="name" />
+                    <Column title="字典名称" dataIndex="config_data_name" key="name" />
                     <Column title="发布状态" dataIndex="发布状态" key="发布状态" />
-                    <Column title="create time" dataIndex="create_time" key="create time" />
-                    <Column title="update time" dataIndex="update_time" key="update time" />
-                    <Column title="create user" dataIndex="create_user" key="create user" />
-                    <Column title="update user" dataIndex="update_user" key="update user" />
+                    <Column title="创建时间" dataIndex="create_time" key="create time" />
+                    <Column title="更新时间" dataIndex="update_time" key="update time" />
+                    <Column title="创建人" dataIndex="create_user" key="create user" />
+                    <Column title="更新人" dataIndex="update_user" key="update user" />
                     <Column
                         title="编辑"
                         dataIndex="group_id"
@@ -186,8 +186,8 @@ class ConfigDataCollection extends React.Component {
                     <Form
                         name="ttttt">
                         <Form.Item
-                            name="groupId"
-                            label="groupId"
+                            name="服务ID"
+                            label="配置组ID"
                         >
                             <Select defaultValue="lucy" style={{ width: 120 }}>
                                 <Select value="jack">门店</Select>
@@ -199,7 +199,7 @@ class ConfigDataCollection extends React.Component {
                         </Form.Item>
                         <Form.Item
                             name="appId"
-                            label="appId"
+                            label="服务ID"
                         >
                             <Select defaultValue="lucy" style={{ width: 120 }}>
                                 <Select value="jack">80001</Select>
@@ -211,13 +211,13 @@ class ConfigDataCollection extends React.Component {
                         </Form.Item>
                         <Form.Item
                             name="dataId"
-                            label="appName"
+                            label="字典ID"
                         >
                             <Input type={"input"} defaultValue={this.state.module_id}/>
                         </Form.Item>
                         <Form.Item
                             name="dataName"
-                            label="dataName"
+                            label="字典名称"
                         >
                             <Input type={"input"} defaultValue={this.state.module_id}/>
                         </Form.Item>
@@ -255,9 +255,9 @@ class ConfigDataCollection extends React.Component {
                             </Form>
                     </span>
                     <Table dataSource={data} style={{marginTop:'30px'}}>
-                        <Column title="group id" dataIndex="group_id" key="group_id" />
-                        <Column title="app id" dataIndex="app_id" key="name" />
-                        <Column title="data id" dataIndex="config_data_id" key="name" />
+                        <Column title="key" dataIndex="group_id" key="group_id" />
+                        <Column title="value" dataIndex="app_id" key="name" />
+                        <Column title="name" dataIndex="config_data_id" key="name" />
                         <Column
                             title="删除"
                             key="action"

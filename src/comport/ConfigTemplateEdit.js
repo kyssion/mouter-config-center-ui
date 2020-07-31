@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import {Button, Col, Form, PageHeader, Row, Select, Table} from 'antd';
+import {Button, Col, Form, Input, Modal, PageHeader, Row, Select, Table} from 'antd';
 import { Collapse } from 'antd';
 
 const { Panel } = Collapse;
@@ -7,54 +7,6 @@ const { Panel } = Collapse;
 function callback(key) {
     console.log(key);
 }
-const columns = [
-    {
-        title: 'id',
-        dataIndex: 'id',
-        key: 'id',
-    },
-    {
-        title: '节点名称',
-        dataIndex: 'name',
-        key: 'name',
-        width: '12%',
-    }, {
-        title: '节点类型',
-        dataIndex: 'nodeType',
-        key: 'name',
-        width: '12%',
-    },{
-        title: '默认值',
-        dataIndex: 'nodeDef',
-        key: 'name',
-        width: '12%',
-    },
-    {
-        title: '修改字典',
-        dataIndex: '',
-        render: (_, record) => {
-            return <Button>修改</Button>
-        }
-    },{
-        title: '元数据类型',
-        dataIndex: 'metaType',
-    },{
-        title: '元数据默认值',
-        dataIndex: 'metaDef',
-    },{
-        title: '元数据编辑',
-        dataIndex: 'operation',
-        render: (_, record) => {
-            return <Button>修改</Button>
-        }
-    },{
-        title: '删除',
-        dataIndex: 'operation',
-        render: (_, record) => {
-            return <Button>删除</Button>
-        }
-    }
-];
 
 const data = [
     {
@@ -163,6 +115,108 @@ const rowSelection = {
 };
 
 class ConfigTemplateEdit extends React.Component{
+
+    constructor(prop) {
+        super(prop);
+        this.state = {
+            visible1:false,
+            visible2:false
+        }
+    }columns = [
+        {
+            title: 'id',
+            dataIndex: 'id',
+            key: 'id',
+        },
+        {
+            title: '节点名称',
+            dataIndex: 'name',
+            key: 'name',
+            width: '12%',
+        }, {
+            title: '节点类型',
+            dataIndex: 'nodeType',
+            key: 'name',
+            width: '12%',
+        },{
+            title: '默认值',
+            dataIndex: 'nodeDef',
+            key: 'name',
+            width: '12%',
+        },
+        {
+            title: '修改字典',
+            dataIndex: '',
+            render: (_, record) => {
+                return <Button onClick={this.showModal1}>修改</Button>
+            }
+        },{
+            title: '元数据类型',
+            dataIndex: 'metaType',
+        },{
+            title: '元数据默认值',
+            dataIndex: 'metaDef',
+        },{
+            title: '元数据编辑',
+            dataIndex: 'operation',
+            render: (_, record) => {
+                return <Button onClick={this.showModal2}>修改</Button>
+            }
+        },{
+            title: '删除',
+            dataIndex: 'operation',
+            render: (_, record) => {
+                return <Button>删除</Button>
+            }
+        }
+    ];
+    showModal2 = () => {
+        this.setState({
+            visible2: true,
+        });
+    };
+
+    handleOk2 = e => {
+        console.log(e);
+        this.setState({
+            visible2: false,
+        });
+    };
+
+    handleCancel2 = e => {
+        console.log(e);
+        this.setState({
+            visible2: false,
+        });
+    };
+
+    onFinish1 = values => {
+        console.log('Received values from form: ', values);
+    };
+    showModal1 = () => {
+        this.setState({
+            visible1: true,
+        });
+    };
+
+    handleOk1 = e => {
+        console.log(e);
+        this.setState({
+            visible1: false,
+        });
+    };
+
+    handleCancel1 = e => {
+        console.log(e);
+        this.setState({
+            visible1: false,
+        });
+    };
+
+    onFinish1 = values => {
+        console.log('Received values from form: ', values);
+    };
+
     render() {
         return(
             <div>
@@ -174,13 +228,13 @@ class ConfigTemplateEdit extends React.Component{
                 />
                 <Collapse defaultActiveKey={['1']} onChange={callback}>
                     <Panel header="配置信息树1" key="1">
-                        <Table columns={columns} rowSelection={rowSelection} dataSource={data} pagination={false}/>
+                        <Table columns={this.columns} rowSelection={rowSelection} dataSource={data} pagination={false}/>
                     </Panel>
                     <Panel header="配置信息树2" key="2">
-                        <Table columns={columns} rowSelection={rowSelection} dataSource={data} pagination={false}/>
+                        <Table columns={this.columns} rowSelection={rowSelection} dataSource={data} pagination={false}/>
                     </Panel>
                     <Panel header="配置信息树3" key="3">
-                        <Table columns={columns} rowSelection={rowSelection} dataSource={data} pagination={false}/>
+                        <Table columns={this.columns} rowSelection={rowSelection} dataSource={data} pagination={false}/>
                     </Panel>
                 </Collapse>
                 <Row style={{margin:'10px'}} span={24} justify="end" gutter={10}>
@@ -253,6 +307,78 @@ class ConfigTemplateEdit extends React.Component{
                 <Row style={{margin:'10px'}} justify="end">
 
                 </Row>
+                <Modal
+                    title="字典编辑"
+                    visible={this.state.visible1}
+                    onOk={this.handleOk1}
+                    onCancel={this.handleCancel1}
+                >
+                    <Form
+                        name="ttttt">
+                        <Form.Item
+                            name="groupId"
+                            label="节点类型"
+                        >
+                            <Select defaultValue="lucy" style={{ width: 120 }}>
+                                <Select value="jack">单选</Select>
+                                <Select value="lucy">多选</Select>
+                                <Select>
+                                    BOOL
+                                </Select>
+                                <Select>
+                                    字符串
+                                </Select>
+                                <Select>
+                                    数字
+                                </Select>
+                            </Select>
+                        </Form.Item>
+                        <Form.Item
+                            name="group_name"
+                            label="绑定字典"
+                        >
+                            <Select defaultValue="lucy" style={{ width: 120 }}>
+                                <Select value="jack">字典1</Select>
+                                <Select value="lucy">字典2</Select>
+                                <Select value="dic">字典3</Select>
+                            </Select>
+                        </Form.Item>
+                        <Form.Item
+                            name="appId"
+                            label="默认值"
+                        >
+                            <Input type={"input"} defaultValue={this.state.module_id}/>
+                        </Form.Item>
+                    </Form>
+                </Modal>
+                <Modal
+                    title="元数据编辑"
+                    visible={this.state.visible2}
+                    onOk={this.handleOk2}
+                    onCancel={this.handleCancel2}
+                >
+                    <Form
+                        name="ttttt">
+                        <Form.Item
+                            name="groupId"
+                            label="元数据类型"
+                        >
+                            <Select defaultValue="lucy" style={{ width: 120 }}>
+                                <Select value="jack">DIV</Select>
+                                <Select value="lucy">IMAGE</Select>
+                                <Select>
+                                    URL
+                                </Select>
+                            </Select>
+                        </Form.Item>
+                        <Form.Item
+                            name="appId"
+                            label="默认值"
+                        >
+                            <Input type={"input"} defaultValue={this.state.module_id}/>
+                        </Form.Item>
+                    </Form>
+                </Modal>
             </div>
         );
     }

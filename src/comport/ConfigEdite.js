@@ -8,70 +8,7 @@ const { Option } = Select;
 function callback(key) {
     console.log(key);
 }
-const columns = [
-    {
-        title: 'id',
-        dataIndex: 'id',
-        key: 'id',
-    },
-    {
-        title: '节点名称',
-        dataIndex: 'name',
-        key: 'name',
-    },{
-        title: '节点值',
-        dataIndex: 'value',
-        key: 'name',
-        render: ()=>{
-            let num = Math.random()*3000;
-            if(num<1000){
-                return  (<Select defaultValue="lucy" style={{ width: 120 }}>
-                    <Option value="jack">Jack</Option>
-                    <Option value="lucy">Lucy</Option>
-                    <Option value="disabled" disabled>
-                        Disabled
-                    </Option>
-                    <Option value="Yiminghe">yiminghe</Option>
-                </Select>);
-            }else if(num>=1000&&num<2000){
-                return (<Select mode="multiple" defaultValue="lucy" style={{ width: 120 }}>
-                    <Option value="jack">Jack</Option>
-                    <Option value="lucy">Lucy</Option>
-                    <Option value="disabled" disabled>
-                        Disabled
-                    </Option>
-                    <Option value="Yiminghe">yiminghe</Option>
-                </Select>);
-            }else{
-                return <Input/>
-            }
-        }
-    },{
-        title:"元数据类型",
-        dataIndex: "type",
-        key:"type",
-    },{
-        title:"元数据信息",
-        dataIndex: "typeValue",
-        key:"typeValue",
-        render:(text)=>{
-            return <textarea value={text}></textarea>
-        }
-    },{
-        title: '元数据编辑',
-        dataIndex: 'value',
-        key: 'name',
-        render: ()=>{
-            return <Button onClick={
-                ()=>{
-                    that.status({visible:true})
-                }
-            }>编辑</Button>
-        }
-    }
-];
 
-let that;
 
 const data = [
     {
@@ -168,13 +105,76 @@ const rowSelection = {
 };
 
 class ConfigEdite extends React.Component{
+     columns = [
+        {
+            title: 'id',
+            dataIndex: 'id',
+            key: 'id',
+        },
+        {
+            title: '节点名称',
+            dataIndex: 'name',
+            key: 'name',
+        },{
+            title: '节点值',
+            dataIndex: 'value',
+            key: 'name',
+            render: ()=>{
+                let num = Math.random()*3000;
+                if(num<1000){
+                    return  (<Select defaultValue="lucy" style={{ width: 120 }}>
+                        <Option value="jack">Jack</Option>
+                        <Option value="lucy">Lucy</Option>
+                        <Option value="disabled" disabled>
+                            Disabled
+                        </Option>
+                        <Option value="Yiminghe">yiminghe</Option>
+                    </Select>);
+                }else if(num>=1000&&num<2000){
+                    return (<Select mode="multiple" defaultValue="lucy" style={{ width: 120 }}>
+                        <Option value="jack">Jack</Option>
+                        <Option value="lucy">Lucy</Option>
+                        <Option value="disabled" disabled>
+                            Disabled
+                        </Option>
+                        <Option value="Yiminghe">yiminghe</Option>
+                    </Select>);
+                }else{
+                    return <Input/>
+                }
+            }
+        },{
+            title:"元数据类型",
+            dataIndex: "type",
+            key:"type",
+        },{
+            title:"元数据信息",
+            dataIndex: "typeValue",
+            key:"typeValue",
+            render:(text)=>{
+                return <textarea value={text}></textarea>
+            }
+        },{
+            title: '元数据编辑',
+            dataIndex: 'value',
+            key: 'name',
+            render: ()=>{
+                return <Button onClick={
+                    ()=>{
+                        console.log(this.state);
+                        this.setState({visible:true})
+                    }
+                }>编辑</Button>
+            }
+        }
+    ];
+
 
     constructor(prop) {
         super(prop);
         this.state = {
             visible:false
         }
-        that = this;
     }
 
     showModal = () => {
@@ -208,13 +208,13 @@ class ConfigEdite extends React.Component{
                 />
                 <Collapse defaultActiveKey={['1']} onChange={callback}>
                     <Panel header="配置信息树1" key="1">
-                        <Table columns={columns} rowSelection={rowSelection} dataSource={data} pagination={false}/>
+                        <Table columns={this.columns} rowSelection={rowSelection} dataSource={data} pagination={false}/>
                     </Panel>
                     <Panel header="配置信息树2" key="2">
-                        <Table columns={columns} rowSelection={rowSelection} dataSource={data} pagination={false}/>
+                        <Table columns={this.columns} rowSelection={rowSelection} dataSource={data} pagination={false}/>
                     </Panel>
                     <Panel header="配置信息树3" key="3">
-                        <Table columns={columns} rowSelection={rowSelection} dataSource={data} pagination={false}/>
+                        <Table columns={this.columns} rowSelection={rowSelection} dataSource={data} pagination={false}/>
                     </Panel>
                 </Collapse>
                 <Row style={{margin:'10px'}} justify="end">
@@ -233,13 +233,27 @@ class ConfigEdite extends React.Component{
                     </Col>
                 </Row>
                 <Modal
-                    title="Basic Modal"
-                    visible={false}
+                    title="元数据编辑"
+                    visible={this.state.visible}
                     onOk={this.handleOk}
                     onCancel={this.handleCancel}
                 >
-                    <Form>
-                    </Form>
+                    <Form.Item
+                        name="group_id"
+                        label="元数据类型">
+                        <Select defaultValue="DIV" style={{ width: 120 }}>
+                            <Select value="jack">DIV</Select>
+                            <Select value="lucy">IMAGE</Select>
+                            <Select value="disabled">
+                                URL
+                            </Select>
+                        </Select>
+                    </Form.Item>
+                    <Form.Item
+                        name="group_id"
+                        label="元数据信息">
+                        <textarea></textarea>
+                    </Form.Item>
                 </Modal>
             </div>
 
